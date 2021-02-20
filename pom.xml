@@ -3,6 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>V1</module>
+        <module>V4</module>
+        <module>V4</module>
+        <module>V5</module>
+        <module>V6</module>
+        <module>V7</module>
+        <module>V8</module>
+        <module>V9</module>
+    </modules>
     <properties>
         <!-- 设置 JDK 版本为 1.8 -->
         <maven.compiler.target>1.8</maven.compiler.target>

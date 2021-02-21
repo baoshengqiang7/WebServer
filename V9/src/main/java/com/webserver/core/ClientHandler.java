@@ -21,16 +21,16 @@ public class ClientHandler implements Runnable{
         this.socket = socket;
     }
     public void run() {
-        try{
+        try {
             //1解析请求
             HttpRequest request = new HttpRequest(socket);
             HttpResponse response = new HttpResponse(socket);
             //2处理请求
             String path = request.getUri();
-            System.out.println("uri:"+path);
-            File file = new File("./webapps"+path);
+            System.out.println("uri:" + path);
+            File file = new File("./webapps" + path);
 
-            if(file.exists() && file.isFile()){
+            if (file.exists() && file.isFile()) {
                 System.out.println("该资源已找到");
                 response.setEntity(file);
                 //1.发送状态行
@@ -38,7 +38,7 @@ public class ClientHandler implements Runnable{
                 //3.发送响应正文
 
                 //若资源不存在则响应404
-            }else {
+            } else {
                 System.out.println("该资源不存在！");
                 File notFoundPage = new File("./webapps/root/404.html");
                 response.setStatusCode(404);
@@ -48,7 +48,8 @@ public class ClientHandler implements Runnable{
             //3发送响应
             response.flush();
             System.out.println("响应完毕");
-
+        }catch(EnumConstantNotPresentException e){
+            //什么都不用做，上面抛出该异常就是为了忽略处理和相应操作
         }catch(Exception e){
             e.printStackTrace();
         }finally{

@@ -27,27 +27,12 @@ public class ClientHandler implements Runnable{
             //若该资源存在并且是一个文件，则响应正常
             if(file.exists() && file.isFile()){
                 System.out.println("该资源已找到:"+file.getName());
-                Map<String,String> map = new HashMap<>();
-                map.put("html","text/html");
-                map.put("css","text/css");
-                map.put("js","application/javascript");
-                map.put("png","image/png");
-                map.put("gif","image/gif");
-                map.put("jpg","image/jpeg");
-
-                String filename = file.getName();
-                String last = filename.substring(filename.lastIndexOf(".")+1);
-                String type = map.get(last);
-                response.putHeader("Content-Type",type);
-                response.putHeader("Content-Length",file.length()+"");
                 response.setEntity(file);
             }else{
                 System.out.println("该资源不存在！");
                 File notFoundPage = new File("./webapps/root/404.html");
                 response.setStatusCode(404);
                 response.setStatusReason("NotFound");
-                response.putHeader("Content-Type","text/html");
-                response.putHeader("Coontent-Length",notFoundPage.length()+"");
                 response.setEntity(notFoundPage);
             }
 

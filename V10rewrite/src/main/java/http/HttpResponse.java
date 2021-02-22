@@ -109,6 +109,11 @@ public class HttpResponse {
 
     public void setEntity(File entity) {
         this.entity = entity;
+        String lin = entity.getName();
+        String ext = lin.substring(lin.lastIndexOf(".") + 1);
+        String value = HttpContext.getMimeType(ext);
+        putHeader("Content-Type",value);
+        putHeader("Content-Length",entity.length()+"");
     }
 
     public int getStatusCode() {

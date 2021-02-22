@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<list>
+    <emp id = "1">
+        <name>鲍生强</name>
+        <age>23</age>
+        <gender>男</gender>
+        <salary>5000</salary>
+    </emp>
+    <emp id = "5">
+        <name>张劲</name>
+        <age>99</age>
+        <gender>男</gender>
+        <salary>10000</salary>
+    </emp>
+    <emp id = "3">
+        <name>马小凡</name>
+        <age>99</age>
+        <gender>男</gender>
+        <salary>4000</salary>
+    </emp>
+    <emp id = "4">
+        <name>付淼</name>
+        <age>99</age>
+        <gender>女</gender>
+        <salary>6000</salary>
+    </emp>
+    <emp id = "5">
+        <name>张细</name>
+        <age>23</age>
+        <gender>男</gender>
+        <salary>3000</salary>
+    </emp>
+</list>

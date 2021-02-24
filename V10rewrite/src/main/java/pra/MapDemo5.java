@@ -1,12 +1,11 @@
-package core;
+package pra;
 
-import javax.imageio.stream.ImageInputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class mapDemo6 {
+public class MapDemo5 {
     public static void main(String[] args) {
         Map<String,Integer> map = new HashMap<String,Integer>();
         map.put("迪达拉",99);

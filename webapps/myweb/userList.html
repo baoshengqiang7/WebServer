@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+    <center>
+        <h1>用户列表</h1>
+        <table border="5">
+            <tr>
+                <td>用户名</td>
+                <td>密码</td>
+                <td>昵称</td>
+                <td>年龄</td>
+                <td>操作</td>
+            </tr>
+            <tr th:each="user:${list}"><!--${key}与context.setVariable("key",XXX)对应-->
+                <td th:text="${user.username}">波风水门</td><!-- th:text=""用于将当前标签中间的文本换成该属性的值-->
+                <td th:text="${user.password}">123456</td>
+                <td th:text="${user.nickname}">SM</td>
+                <td th:text="${user.age}">22</td>
+                <!-- 生成href的内容为:./toupdate?username=该用户名 -->
+                <td><a href="#" th:href="@{'./toupdate?username='+${user.username}}">修改信息</a></td>
+            </tr>
+            <tr th:remove="all"><!-- remove="all"生成动态页面时这个标签及其子标签全忽略-->
+                <td>玖辛奈</td>
+                <td>123456</td>
+                <td>JXN</td>
+                <td>22</td>
+                <td><a href="#">修改信息</a></td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

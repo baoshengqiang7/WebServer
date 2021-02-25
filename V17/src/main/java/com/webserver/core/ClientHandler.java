@@ -5,6 +5,7 @@ import com.webserver.http.HttpRequest;
 import com.webserver.http.HttpResponse;
 import servlet.LoginServlet;
 import servlet.RegServlet;
+import servlet.ShowAllUserServlet;
 
 import java.io.*;
 import java.net.Socket;
@@ -44,6 +45,9 @@ public class ClientHandler implements Runnable{
             //处理登录业务
             LoginServlet login = new LoginServlet();
             login.service(request, response);
+        }else if ("/myweb/showAllUser".equals(path)){
+            ShowAllUserServlet servlet = new ShowAllUserServlet();
+            servlet.service(request,response);
         }else{
             File file = new File("./webapps" + path);
             //若该资源存在并且是一个文件，则正常响应

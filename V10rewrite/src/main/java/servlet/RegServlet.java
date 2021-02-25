@@ -22,6 +22,11 @@ public class RegServlet {
         String nickname = request.getParameter("nickname");
         String ageStr = request.getParameter("age");
 
+        if(username==null || password==null || nickname==null || ageStr==null ||ageStr.matches("[0-9]*")){
+            File file = new File("./webapps/myweb/reg_info_error.html");
+            response.setEntity(file);
+            return;
+        }
         int age = Integer.parseInt(ageStr);//将年龄转换为int值
         System.out.println(username+","+password+","+nickname+","+age);
 
@@ -32,6 +37,17 @@ public class RegServlet {
         try(
                 RandomAccessFile raf = new RandomAccessFile("user.dat","rw");
         ){
+            for(int i = 0;i<raf.length()/100;i++){
+                raf.seek(i*100);
+                byte[] data = new byte[32];
+                raf.read(data);
+                String name = new String(data,"UTF-8").trim();
+                if(name.equals(username)){
+                    File file = new File("./webapps/myweb/have_user.html");
+                    response.setEntity(file);
+                    return;
+                }
+            }
             raf.seek(raf.length());
             //写用户名
             byte[] data = username.getBytes("UTF-8");
